@@ -1,0 +1,103 @@
+﻿commit 73edd4bf82380f6bcdb3dbbf24e733380287d807
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:45:49 2018 +0200
+
+    lisäys ja poisto
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d7ca1d698885432352efc9bc171bed502e0877ce
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:44:59 2018 +0200
+
+    lisäys
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1be30038a5fc41af733e8c9414de23dfbe9ac885
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:40:11 2018 +0200
+
+    uudelleen nimeäminen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f24353b46d6b07252159e46566825a433eb7c6ab
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:38:33 2018 +0200
+
+    toinen.txt poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit f8bfa27f507481617516a6b4e985012869e9feb7
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:36:54 2018 +0200
+
+    muokkaus
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d9476dfa04dd37a1acfff1c15dba587db4ea6f3d
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:35:59 2018 +0200
+
+    tiedosto.txt muokkaus
+
+ tiedosto.txt | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit e8f146e23b92636f0a7273de2bcd744136d59531
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:33:23 2018 +0200
+
+    stuff kansion ja sinne tiedoston lisäys
+
+ stuff/teksti.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d12a7f3d43f351d2f30b48332be11167ac17fe17
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:32:02 2018 +0200
+
+    muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit dfa2fd4a707c11376e0721573086dbfc6053cad4
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:31:28 2018 +0200
+
+    kolmas.txt lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ae29e6b8580ae0e1e4c895a775fb0b6ff293f01c
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:15:10 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 3f82f6575367f9bd0870af95aaf471ac49ed7b87
+Author: Sami <sami.rinksam@gmail.com>
+Date:   Fri Nov 2 03:13:12 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
