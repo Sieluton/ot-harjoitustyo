@@ -15,3 +15,5 @@ Nunc ac eros enim. **Morbi** orci neque, commodo in tempor ac, rhoncus sit amet 
 [tuntikirjanpito](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/tuntikirjanpito.md)
 
 [vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/vaatimusmaarittely.md)
+
+[testikattavuus](https://github.com/Sieluton/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
