@@ -12,6 +12,6 @@ Nunc ac eros enim. **Morbi** orci neque, commodo in tempor ac, rhoncus sit amet 
 
 ### Viikko 2
 
-[tuntikirjanpito](https://github.com/Sieluton/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+[tuntikirjanpito](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/tuntikirjanpito.md)
 
-[vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/vaatimusmaarittely.md)
