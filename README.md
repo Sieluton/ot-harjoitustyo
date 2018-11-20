@@ -1,5 +1,7 @@
 # Sudoku
 
+Sovelluksen tarkoitus on tarjota helppo ja mukava tapa ratkaista 9x9 sudokuja ilman virheitä. Sovellus tarkistaa ruudukon sisällön sääntöjen mukaisuutta ja ilmoittaa jos se huomaa virheen.
+
 ## Dokumentaatio
 
 [vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/vaatimusmaarittely.md)
@@ -15,7 +17,7 @@ Tulee myöhemmin
 
 ### Ohjelman suoritus
 
-Ohjelman voi suorittaa komentoriviltä  komennolla
+Ohjelman voi suorittaa komennolla
 
 ```
 mvn compile exec:java -Dexec.mainClass=sudoku.ui.SudokuUi
