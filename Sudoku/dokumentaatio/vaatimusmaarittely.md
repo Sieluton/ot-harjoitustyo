@@ -3,10 +3,7 @@
 
 ## Pelin tarkoitus
 
-Peli on sudoku jonka tarkoitus on ratkaista ratkaisematon 9x9 sudoku täyttämällä tyhjän kohdat oikeilla 
-numeroilla. Sudokun säännöt eli jokaisella pysty- ja vaakarivillä saa olla vain kerran jokainen numero väliltä
-1-9. Samoin jokaisessa 3x3 neliössä joita on 9 kappaletta voi myöskin esiintyä jokainen numero 1-9 vain kerran.
-Näitä sääntöjä seuraten on tarkoitus täyttää ruudukko kokonaan.
+Peli on sudoku jonka tarkoitus on ratkaista ratkaisematon 9x9 sudoku täyttämällä tyhjän kohdat oikeilla numeroilla. Sudokun säännöt eli jokaisella pysty- ja vaakarivillä saa olla vain kerran jokainen numero väliltä 1-9. Samoin jokaisessa 3x3 neliössä joita on 9 kappaletta voi myöskin esiintyä jokainen numero 1-9 vain kerran. Näitä sääntöjä seuraten on tarkoitus täyttää ruudukko kokonaan.
 
 
 ## Perusversion toiminnallisuudet
