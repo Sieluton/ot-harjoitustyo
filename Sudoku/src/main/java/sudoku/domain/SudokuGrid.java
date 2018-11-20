@@ -33,18 +33,30 @@ public class SudokuGrid {
         return grid[y][x];
     }
 
-    // Checks if row contains only one of each number (1-9)
+    // Checks if row contains only one of each number (1-9), 0 is empty space in row.
     public boolean checkRow(int y){
+        int[] amounts = new int[10];
+        // Fills amounts[] with amount of each number on this row
         for (int x  = 0; x < 9; x++){
-
+            amounts[grid[y][x]]++;
+        }
+        // Checks if any number between 1-9 is present more than once
+        for (int i = 1; i < amounts.length; i++){
+            if (amounts[i] > 1) return false;
         }
         return true;
     }
 
-    // Checks if column contains only one of each number (1-9)
+    // Checks if column contains only one of each number (1-9), 0 is empty space in column.
     public boolean checkColumn(int x){
+        int[] amounts = new int[10];
+        // Fills amounts[] with amount of each number on this column
         for (int y  = 0; y < 9; y++){
-
+            amounts[grid[y][x]]++;
+        }
+        // Checks if any number between 1-9 is present more than once
+        for (int i = 1; i < amounts.length; i++){
+            if (amounts[i] > 1) return false;
         }
         return true;
     }
