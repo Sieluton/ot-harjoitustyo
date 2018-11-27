@@ -9,12 +9,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
-
 import java.util.*;
 
 public class SudokuUi extends Application {
     public SudokuGrid sudokuGrid = new SudokuGrid("295743861431865927876192543389459216612387495549216738763534189928671354154938672");
     public Canvas canvas;
+    public Scene scene;
+    public int selected_row = -1;
+    public int selected_column = -1;
+    public int key_typed = -1;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,19 +27,20 @@ public class SudokuUi extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Sudoku");
         StackPane layout = new StackPane();
-        canvas = new Canvas(378, 378);
+        canvas = new Canvas(360, 360);
         layout.getChildren().add(canvas);
-        Scene scene = new Scene(layout, 400,400, Color.GREY);
+        scene = new Scene(layout, 400,400, Color.GREY);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setLineWidth(2.0);
         drawOnCanvas(gc);
-
+        selectSquare(); // Allows for choosing which square to edit
+        keyPressed();
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private void drawOnCanvas(GraphicsContext gc) {
-        gc.clearRect(0,0,378,378);
+    public void drawOnCanvas(GraphicsContext gc) {
+        gc.clearRect(0,0,360,360);
         for(int row = 0; row<9; row++) {
             for(int col = 0; col<9; col++) {
                 int y = row * 40 + 2;
@@ -44,6 +48,12 @@ public class SudokuUi extends Application {
                 int width = 36;
 
                 gc.setFill(Color.LIGHTGRAY);
+                if (row == selected_row && col == selected_column) {
+                    gc.setFill(Color.LIGHTBLUE);
+                    if (key_typed > -1) {
+                        sudokuGrid.setNumber(row, col, key_typed);
+                    }
+                }
                 gc.fillRoundRect(x, y, width, width, 10, 10);
                 gc.setFill(Color.BLACK);
                 gc.setFont(new Font(20));
@@ -52,5 +62,25 @@ public class SudokuUi extends Application {
                 }
             }
         }
+        if (key_typed > -1) {
+            key_typed = -1;
+        }
+    }
+
+    public void selectSquare() {
+        canvas.setOnMouseClicked(e ->  {
+            selected_row = (int) e.getY() / 40;
+            selected_column = (int) e.getX() / 40;
+            drawOnCanvas(canvas.getGraphicsContext2D());
+        });
+    }
+
+    public void keyPressed() {
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode().isKeypadKey() || e.getCode().isDigitKey()){
+                key_typed = Integer.parseInt(e.getText());
+                drawOnCanvas(canvas.getGraphicsContext2D());
+            }
+        });
     }
 }
