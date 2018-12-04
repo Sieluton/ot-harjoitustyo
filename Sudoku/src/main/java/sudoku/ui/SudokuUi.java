@@ -12,7 +12,7 @@ import sudoku.domain.SudokuGrid;
 import java.util.*;
 
 public class SudokuUi extends Application {
-    public SudokuGrid sudokuGrid = new SudokuGrid("295743861431865927876192543389459216612387495549216738763534189928671354154938672");
+    public SudokuGrid sudokuGrid = new SudokuGrid("295743861431865927876192543387459216612387495549216738763524189928671354154938672");
     public Canvas canvas;
     public Scene scene;
     public int selected_row = -1;
@@ -50,9 +50,9 @@ public class SudokuUi extends Application {
                 gc.setFill(Color.LIGHTGRAY);
                 if (row == selected_row && col == selected_column) {
                     gc.setFill(Color.LIGHTBLUE);
-                    if (key_typed > -1) {
-                        sudokuGrid.setNumber(row, col, key_typed);
-                    }
+                }
+                if (sudokuGrid.getLegalStatus(row, col)) {
+                    gc.setFill(Color.LIGHTSALMON);
                 }
                 gc.fillRoundRect(x, y, width, width, 10, 10);
                 gc.setFill(Color.BLACK);
@@ -79,6 +79,10 @@ public class SudokuUi extends Application {
         scene.setOnKeyPressed(e -> {
             if (e.getCode().isKeypadKey() || e.getCode().isDigitKey()){
                 key_typed = Integer.parseInt(e.getText());
+                if (selected_row != -1 && selected_column != -1) {
+                    sudokuGrid.setNumber(selected_row, selected_column, key_typed);
+                    sudokuGrid.checkWholeSudoku();
+                }
                 drawOnCanvas(canvas.getGraphicsContext2D());
             }
         });
