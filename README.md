@@ -11,7 +11,7 @@ Sovelluksen tarkoitus on tarjota helppo ja mukava tapa ratkaista 9x9 sudokuja il
 
 ## Releaset
 
-Tulee myöhemmin
+[Viikko 5](https://github.com/Sieluton/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
 
