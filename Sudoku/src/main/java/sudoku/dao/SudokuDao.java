@@ -1,8 +1,14 @@
 package sudoku.dao;
 import java.sql.*;
 
+/**
+ * Tietokannan rajapinta
+ */
 public class SudokuDao {
 
+    /**
+     * Alustaa tietokannan jos sitä ei ole vielä.
+     */
     public void createDB() {
         Connection conn = null;
         Statement stmt = null;
@@ -88,6 +94,11 @@ public class SudokuDao {
         }
     }
 
+    /**
+     * Hakee tietokannasta halutusta paikkaa sudokun ja palauttaa sen.
+     * @param slot talletuspaikka
+     * @return String[] jossa on sudokun tiedot
+     */
     public String[] getSave(int slot) {
         String[] save = new String[3];
         Connection conn = null;
@@ -110,6 +121,11 @@ public class SudokuDao {
         return save;
     }
 
+    /**
+     * Hakee tietokannasta halutun vaikeuden sudokun ja palauttaa sen
+     * @param difficulty vaikeusaste
+     * @return String[] jossa on sudokun tiedot
+     */
     public String[] getNew(int difficulty) {
         String[] save = new String[3];
         Connection conn = null;
@@ -132,6 +148,11 @@ public class SudokuDao {
         return save;
     }
 
+    /**
+     * Tallettaa annetun sudokun annettuun talletuspaikkaan.
+     * @param slot talletuspaikka
+     * @param save sudoku joka halutaan tallettaa
+     */
     public void saveSudoku(int slot, String[] save) {
         Connection conn = null;
         Statement stmt = null;

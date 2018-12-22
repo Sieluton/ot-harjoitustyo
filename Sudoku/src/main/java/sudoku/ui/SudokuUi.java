@@ -15,16 +15,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
 
-
+/**
+ * Käyttöliittymä
+ */
 public class SudokuUi extends Application {
-    public SudokuGrid sudokuGrid = new SudokuGrid();
-    public Canvas canvas;
-    public Scene gameScene;
-    public Scene menuScene;
-    public Stage window;
-    public int selected_row = -1;
-    public int selected_column = -1;
-    public int key_typed = -1;
+    private SudokuGrid sudokuGrid = new SudokuGrid();
+    private Canvas canvas;
+    private Scene gameScene;
+    private Scene menuScene;
+    private Stage window;
+    private int selected_row = -1;
+    private int selected_column = -1;
+    private int key_typed = -1;
 
     public static void main(String[] args) {
         launch(args);
@@ -97,6 +99,9 @@ public class SudokuUi extends Application {
         window.show();
     }
 
+    /**
+     * Luo uuden ponnahdusikkunan, jossa kerrotaan onko sudoku ratkaistu.
+     */
     public void checkGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
@@ -121,6 +126,9 @@ public class SudokuUi extends Application {
         box.showAndWait();
     }
 
+    /**
+     * Luo uuden ponnahdusikkunan, josta voi valita minkälaisen pelin haluaa luoda.
+     */
     public void newGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
@@ -172,6 +180,9 @@ public class SudokuUi extends Application {
         box.showAndWait();
     }
 
+    /**
+     * Luo uuden ponnahdusikkunan, josta voi valita minkä aikaisemman pelin haluaa ladata.
+     */
     public void loadGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
@@ -235,6 +246,9 @@ public class SudokuUi extends Application {
         box.showAndWait();
     }
 
+    /**
+     * Luo uuden ponnahdusikkunan, josta voi valita mihin talletuspaikkaan haluaa sudokun tallettaa.
+     */
     public void saveGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
@@ -288,6 +302,10 @@ public class SudokuUi extends Application {
         box.showAndWait();
     }
 
+    /**
+     * Metodi hoitaa sudoku ruudukon piirtämisen ja sen muokkaamisen aina kun sitä tapahtuu.
+     * @param gc GraphicsContext olio joka tekee piirtämisen
+     */
     public void drawOnCanvas(GraphicsContext gc) {
         gc.clearRect(0,0,360,360);
         for(int row = 0; row<9; row++) {
@@ -319,6 +337,9 @@ public class SudokuUi extends Application {
         }
     }
 
+    /**
+     * Kertoo mikä kohta on klikattu sudoku ruudukossa.
+     */
     public void selectSquare() {
         canvas.setOnMouseClicked(e ->  {
             selected_row = (int) e.getY() / 40;
@@ -330,6 +351,9 @@ public class SudokuUi extends Application {
         });
     }
 
+    /**
+     * Kertoo mikä numero on syötetty näppäimistöllä sudokulle.
+     */
     public void keyPressed() {
         gameScene.setOnKeyPressed(e -> {
             if (e.getCode().isKeypadKey() || e.getCode().isDigitKey()){

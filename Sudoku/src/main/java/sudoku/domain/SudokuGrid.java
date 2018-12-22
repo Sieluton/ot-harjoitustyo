@@ -1,12 +1,18 @@
 package sudoku.domain;
 import sudoku.dao.*;
 
+/**
+ * Luokka sudokun logiikkaa varten, jossa on tarkastus ja muokkaus metodeja.
+ */
 public class SudokuGrid {
-    public int[][] grid;
-    public int[][] illegalNumbers;
-    public int[][] initial;
-    public SudokuDao db;
+    private int[][] grid;
+    private int[][] illegalNumbers;
+    private int[][] initial;
+    private SudokuDao db;
 
+    /**
+     * Sudokun konstruktori.
+     */
     public SudokuGrid() {
         db = new SudokuDao();
         db.createDB();
@@ -15,7 +21,12 @@ public class SudokuGrid {
         initial = new int[9][9];
     }
 
-    // Sets specific number in grid
+    /**
+     * Muokkaa sudokun arvon annettuun numeroon.
+     * @param y Y-koordinaatti
+     * @param x X-koordinaatti
+     * @param number sudokuun laitettava numero
+     */
     public void setNumber(int y, int x, int number) {
         if (isInitial(y, x)) {
             return;
@@ -23,7 +34,12 @@ public class SudokuGrid {
         grid[y][x] = number;
     }
 
-    // Checks if given place is initial sudoku core
+    /**
+     * Kertoo on onko koordinaatti alkuarvo jota ei pidä muuttaa.
+     * @param y Y-koordinaatti
+     * @param x X-koordinaatti
+     * @return true jos kyseinen koordinaatti on alkuarvo
+     */
     public boolean isInitial(int y, int x) {
         if (initial[y][x] == 1) {
             return true;
@@ -31,7 +47,11 @@ public class SudokuGrid {
         return false;
     }
 
-    // Sets all numbers that are not 0 as initial sudoku core
+    /**
+     * Muokkaa aina koordinaatin vastakkaiseksi arvoksi.
+     * @param y Y-koordinaatti
+     * @param x X-koordinaatti
+     */
     public void setInitial(int y, int x) {
         if (isInitial(y ,x)) {
             initial[y][x] = 0;
@@ -40,17 +60,32 @@ public class SudokuGrid {
         }
     }
 
-    // Returns specific number from grid
+    /**
+     * Palauttaa annetussa koordinaatissa olevan sudokun ruudun arvon.
+     * @param y Y-koordinaatti
+     * @param x X-koordinaatti
+     * @return sijainnin int
+     */
     public int getNumber(int y, int x) {
         return grid[y][x];
     }
 
-    // Return true if number is breaking rules
+    /**
+     * Palauttaa kyseisen koordinaatin tiedon rikkooko se sääntöjä.
+     * @param y Y-koordinaatti
+     * @param x X-koordinaatti
+     * @return 0 tai 1
+     */
     public int getLegalStatus(int y, int x) {
         return illegalNumbers[y][x];
     }
 
-    // Checks if row or column contains only one of each number (1-9), 0 is empty space in row or column.
+    /**
+     * Palauttaa tiedon onko riveillä tai sarakkeilla sääntörikkeitä ja tallettaa.
+     * ne illegalNumbers tauluun.
+     * @param y koordinaatti
+     * @return boolean arvo onko sääntörike
+     */
     public boolean checkRowAndColumn(int y) {
         int[] row = new int[10];
         int[] column = new int[10];
@@ -74,8 +109,12 @@ public class SudokuGrid {
         return faulty;
     }
 
-
-    // Checks if 3x3 box contains only one of each number (1-9), 0 is empty space in box.
+    /**
+     * Tarkastaa onko 3x3 laatikossa sääntörike ja talleta rikkeet illegalNumbers tauluun.
+     * @param i koordinaatti
+     * @param j koordinaatti
+     * @return boolean arvo onko sääntörike
+     */
     public boolean checkBox(int i, int j) {
         int[] amounts = new int[10];
         boolean faulty = false;
@@ -97,6 +136,11 @@ public class SudokuGrid {
         return faulty;
     }
 
+    /**
+     * Tarkistaa koko sudokun sääntörikkeiltä apumetodeilla.
+     * @param emptyCheck boolean arvo tarkastetaanko tyhjien määrä
+     * @return boolean arvo onko sääntörikkeitä
+     */
     public boolean checkWholeSudoku(boolean emptyCheck) {
         illegalNumbers = new int[9][9];
         boolean faulty = false;
@@ -118,6 +162,10 @@ public class SudokuGrid {
         return faulty;
     }
 
+    /**
+     * Tarkastaa onko sudokussa tyhjiä kohtia.
+     * @return boolean arvo onko tyhjiä
+     */
     public boolean checkForEmptySpaces() {
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
@@ -129,6 +177,10 @@ public class SudokuGrid {
         return true;
     }
 
+    /**
+     * Lähettää haun tietokannan rajapinnalle ja pyytää talletuksen tietystä paikasta.
+     * @param slot talletuspaikka
+     */
     public void getSave(int slot) {
         String[] numbers = db.getSave(slot);
         for (int y = 0; y < 9; y++) {
@@ -140,6 +192,10 @@ public class SudokuGrid {
         }
     }
 
+    /**
+     * Lähettää haun tietokannan rajapinnalle ja pyytää talletuksen tietyllä vaikeudella.
+     * @param difficulty vaikeusaste
+     */
     public void getNew(int difficulty) {
         String[] numbers = db.getNew(difficulty);
         for (int y = 0; y < 9; y++) {
@@ -151,6 +207,10 @@ public class SudokuGrid {
         }
     }
 
+    /**
+     * Lähettää talletuspyynnön tietokannan rajapinnalle sudokun tallentamiseksi annettiin talletuspaikkaan.
+     * @param slot talletuspaikka
+     */
     public void saveSudoku(int slot) {
         String[] save = new String[3];
         String a = "";
