@@ -21,6 +21,14 @@ public class SudokuGrid {
         initial = new int[9][9];
     }
 
+    public int[][] getGrid() {
+        return grid;
+    }
+
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
+    }
+
     /**
      * Muokkaa sudokun arvon annettuun numeroon.
      * @param y Y-koordinaatti
