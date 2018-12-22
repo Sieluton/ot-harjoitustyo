@@ -44,3 +44,21 @@ Hiiren oikealla näppäimellä voidaan ruutuja lukita, jolloin niitä ei voi en�
 Tämä voidaan kuitenkin perua uudella hiiren oikealla klikkauksella kyseisen ruudun päällä.
 
 <img src="https://raw.githubusercontent.com/Sieluton/ot-harjoitustyo/master/Sudoku/dokumentaatio/kuvat/ui/gameWindowColors.png">
+
+_Check_ avaa ponnahdusikkunan joka kertoo onko sudoku ratkaistu ja _Save_ puolestaan avaa ponnahdusikkunan, josta voit valita tallennuspaikan.
+
+## Check ikkuna
+
+Erinäköiset ikkunat jotka aukeavat _Check_ nappulalla.
+
+<img src="https://raw.githubusercontent.com/Sieluton/ot-harjoitustyo/master/Sudoku/dokumentaatio/kuvat/ui/solvedAlert.png">
+
+<img src="https://raw.githubusercontent.com/Sieluton/ot-harjoitustyo/master/Sudoku/dokumentaatio/kuvat/ui/notSolvedAlert.png">
+
+## Save ikkuna
+
+_Save_ nappulan takaa aukeava ikkuna, jossa kaikki 5 eri tallennuspaikkaa.
+_Slot_ napin painaminen tallettaa sudokun kyseiseen paikkaan, jonka jälkeen sen voi ladata alun _Load Game_ näkymässä.
+
+<img src="https://raw.githubusercontent.com/Sieluton/ot-harjoitustyo/master/Sudoku/dokumentaatio/kuvat/ui/saveGameMenu.png">
+
