@@ -7,7 +7,8 @@ Ohjelmaa on testattu automatisoiduin yksikkötestein JUnitilla sekä manuaalises
 ### sovelluslogiikka
 
 Automatisoitujen testien ytimen moudostavat sovelluslogiikkaa, eli pakkauksen [sudoku.domain](https://github.com/Sieluton/ot-harjoitustyo/tree/master/Sudoku/src/main/java/sudoku/domain)
-luokkaa [SudokuGridTest](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/src/test/java/sudoku/domain/SudokuGridTest.java) metodeja testaavat yksikkötestit.
+luokkan [SudokuGrid](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/src/main/java/sudoku/domain/SudokuGrid.java) metodeja testaavat yksikkötestit
+[SudokuGridTest](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/src/test/java/sudoku/domain/SudokuGridTest.java).
 
 ### SudokuDao luokka
 
