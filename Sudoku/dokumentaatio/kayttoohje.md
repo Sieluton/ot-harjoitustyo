@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [sudoku.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
+Lataa tiedosto [sudoku.jar](https://github.com/Sieluton/ot-harjoitustyo/releases/tag/final)
 
 
 ## Ohjelman käynnistäminen

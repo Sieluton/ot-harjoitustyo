@@ -5,7 +5,6 @@ Tarjoaa myös mahdollisuuden tallettaa sudoku ja jatkaa sitä myöhemmin.
 
 ## Dokumentaatio
 
-
 [Käyttöohje](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/vaatimusmaarittely.md)
@@ -20,6 +19,8 @@ Tarjoaa myös mahdollisuuden tallettaa sudoku ja jatkaa sitä myöhemmin.
 ## Releaset
 
 [Viikko 5](https://github.com/Sieluton/ot-harjoitustyo/releases/tag/viikko5)
+
+[Loppupalautus](https://github.com/Sieluton/ot-harjoitustyo/releases/tag/final)
 
 ## Komentorivitoiminnot
 
@@ -69,7 +70,7 @@ JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/ind
 
 ### Checkstyle
 
-Tiedostoon [checkstyle.xml](https://github.com/mluukkai/OtmTodoApp/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle

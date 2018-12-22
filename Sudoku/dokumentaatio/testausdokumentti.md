@@ -24,7 +24,6 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 ### Asennus ja konfigurointi
 
 Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/kayttoohje.md) kuvaamalla tavalla Windows 10 käyttöjärjestelmällä.
-
 Sovellusta on testattu sekä tilanteissa, joissa tietokanta on jo ollut olemassa ja myös silloin kun sitä ei ole jolloin sovellus luo uuden.
 
 ### Toiminnallisuudet
