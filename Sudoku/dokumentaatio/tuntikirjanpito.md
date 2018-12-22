@@ -10,4 +10,4 @@ päivä | aika | mitä tein
 22.12. | 7 | tietokanta lisätty toiminnallisuuksien kanssa
 22.12. | 1 | lisätty mahdollinen ruutujen lukitus
 22.12. | 6 | arkkitehtuurikuvaus, käyttöohje, javadoc ja testausdokumentti lisätty
-yht | 39 |
+yht | 40 |
