@@ -176,7 +176,7 @@ public class SudokuUi extends Application {
     public void loadGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
-        box.setMinWidth(200);
+        box.setMinWidth(150);
         box.setMinHeight(300);
 
         Button saveSlot1Button = new Button("Slot 1");
@@ -239,7 +239,7 @@ public class SudokuUi extends Application {
     public void saveGameAlertBox() {
         Stage box = new Stage();
         box.initModality(Modality.APPLICATION_MODAL);
-        box.setMinWidth(200);
+        box.setMinWidth(150);
         box.setMinHeight(300);
 
         Button saveSlot1Button = new Button("Slot 1");
