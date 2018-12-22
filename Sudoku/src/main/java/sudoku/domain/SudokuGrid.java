@@ -53,7 +53,7 @@ public class SudokuGrid {
      * @param x X-koordinaatti
      */
     public void setInitial(int y, int x) {
-        if (isInitial(y ,x)) {
+        if (isInitial(y, x)) {
             initial[y][x] = 0;
         } else {
             initial[y][x] = 1;
@@ -185,9 +185,9 @@ public class SudokuGrid {
         String[] numbers = db.getSave(slot);
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
-                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y*9+x));
-                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y*9+x));
-                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y*9+x));
+                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y * 9 + x));
+                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y * 9 + x));
+                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y * 9 + x));
             }
         }
     }
@@ -200,9 +200,9 @@ public class SudokuGrid {
         String[] numbers = db.getNew(difficulty);
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
-                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y*9+x));
-                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y*9+x));
-                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y*9+x));
+                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y * 9 + x));
+                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y * 9 + x));
+                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y * 9 + x));
             }
         }
     }
