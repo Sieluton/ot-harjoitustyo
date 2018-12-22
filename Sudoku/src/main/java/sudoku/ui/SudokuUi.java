@@ -7,6 +7,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -14,6 +15,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
+
+import java.awt.event.MouseEvent;
 
 
 public class SudokuUi extends Application {
@@ -129,6 +132,7 @@ public class SudokuUi extends Application {
 
         Button emptySudokuButton = new Button("Empty Sudoku");
         emptySudokuButton.setOnAction(e -> {
+            // Initialize sudoku core
             sudokuGrid.getNew(0);
             drawOnCanvas(canvas.getGraphicsContext2D());
             window.setScene(gameScene);
@@ -303,6 +307,9 @@ public class SudokuUi extends Application {
                 if (sudokuGrid.getLegalStatus(row, col) == 1) {
                     gc.setFill(Color.LIGHTSALMON);
                 }
+                if (sudokuGrid.isInitial(row, col)) {
+                    gc.setFill(Color.DARKGRAY);
+                }
                 gc.fillRoundRect(x, y, width, width, 10, 10);
                 gc.setFill(Color.BLACK);
                 gc.setFont(new Font(20));
@@ -320,6 +327,9 @@ public class SudokuUi extends Application {
         canvas.setOnMouseClicked(e ->  {
             selected_row = (int) e.getY() / 40;
             selected_column = (int) e.getX() / 40;
+            if (e.getButton() == MouseButton.SECONDARY) {
+                sudokuGrid.setInitial(selected_row, selected_column);
+            }
             drawOnCanvas(canvas.getGraphicsContext2D());
         });
     }

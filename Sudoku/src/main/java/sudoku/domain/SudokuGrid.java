@@ -22,7 +22,27 @@ public class SudokuGrid {
 
     // Sets specific number in grid
     public void setNumber(int y, int x, int number) {
+        if (isInitial(y, x)) {
+            return;
+        }
         grid[y][x] = number;
+    }
+
+    // Checks if given place is initial sudoku core
+    public boolean isInitial(int y, int x) {
+        if (initial[y][x] == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    // Sets all numbers that are not 0 as initial sudoku core
+    public void setInitial(int y, int x) {
+        if (isInitial(y ,x)) {
+            initial[y][x] = 0;
+        } else {
+            initial[y][x] = 1;
+        }
     }
 
     // Returns specific number from grid
