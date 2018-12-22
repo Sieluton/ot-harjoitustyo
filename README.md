@@ -1,10 +1,16 @@
 # Sudoku
 
 Sovelluksen tarkoitus on tarjota helppo ja mukava tapa ratkaista 9x9 sudokuja ilman virheitä. Sovellus tarkistaa ruudukon sisällön sääntöjen mukaisuutta ja ilmoittaa jos se huomaa virheen.
+Tarjoaa myös mahdollisuuden tallettaa sudoku ja jatkaa sitä myöhemmin.
 
 ## Dokumentaatio
 
+
+[Käyttöohje](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/vaatimusmaarittely.md)
+
+[Arkkitehtuurikuvaus](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/arkkitehtuuri.md)
 
 [Tuntikirjanpito](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/tuntikirjanpito.md)
 
@@ -48,6 +54,16 @@ mvn package
 ```
 
 generoi hakemistoon _target_ suoritettavan jar-tiedoston _Sudoku-1.0-SNAPSHOT.jar_
+
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/index.html_
 
 ### Checkstyle
 
