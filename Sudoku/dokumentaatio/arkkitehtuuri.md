@@ -37,7 +37,7 @@ _SudokuGrid_ myös pitää tallella sen hetkisen sudokun tiedot.
 
 Tietokannan rajapinta on toteuttu luokassa [sudoku.dao.SudokuDao](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/src/main/java/sudoku/dao/SudokuDao.java).
 
-_SudokuDao_ hoitaa tiedon tallennuksen tietokantaan ja sen hakemisen sieltä.
+_SudokuDao_ hoitaa tiedon tallennuksen tietokantaan ja sen hakemisen sieltä sekä tietokannan luomisen.
 Se on toteutettu _sqlite_ tietokannalla.
 
 ## Päätoiminnallisuudet

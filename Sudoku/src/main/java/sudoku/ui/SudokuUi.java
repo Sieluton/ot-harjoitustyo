@@ -129,7 +129,6 @@ public class SudokuUi extends Application {
 
         Button emptySudokuButton = new Button("Empty Sudoku");
         emptySudokuButton.setOnAction(e -> {
-            // Initialize sudoku core
             sudokuGrid.getNew(0);
             drawOnCanvas(canvas.getGraphicsContext2D());
             window.setScene(gameScene);

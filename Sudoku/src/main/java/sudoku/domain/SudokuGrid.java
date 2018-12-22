@@ -15,11 +15,6 @@ public class SudokuGrid {
         initial = new int[9][9];
     }
 
-    // Returns whole grid
-    public int[][] getGrid() {
-        return grid;
-    }
-
     // Sets specific number in grid
     public void setNumber(int y, int x, int number) {
         if (isInitial(y, x)) {

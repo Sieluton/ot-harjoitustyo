@@ -9,4 +9,5 @@ päivä | aika | mitä tein
 21.12 | 8 | käyttöliittymä saatettu loppuun asti ja koodia parannaltu
 22.12. | 7 | tietokanta lisätty toiminnallisuuksien kanssa
 22.12. | 1 | lisätty mahdollinen ruutujen lukitus
-yht | 34 |
+22.12. | 2 | lisätty arkkitehtuurikuvaus
+yht | 36 |

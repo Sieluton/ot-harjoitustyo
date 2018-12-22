@@ -12,9 +12,6 @@ public class SudokuDao {
             System.out.println(conn);
             stmt = conn.createStatement();
 
-            //stmt.executeUpdate("DROP TABLE SAVES;");
-            //stmt.executeUpdate("DROP TABLE NEW;");
-
             String sql = "CREATE TABLE SAVES " +
                     "(ID INT PRIMARY KEY NOT NULL," +
                     " SUDOKU TEXT NOT NULL, " +
