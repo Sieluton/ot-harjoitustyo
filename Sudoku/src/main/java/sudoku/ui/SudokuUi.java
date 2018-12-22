@@ -8,18 +8,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
-import java.util.*;
 
 
 public class SudokuUi extends Application {
-    public SudokuGrid sudokuGrid = new SudokuGrid("295743861431865927876192543387459216612387495549216738763524189928671354154938672");
+    public SudokuGrid sudokuGrid = new SudokuGrid();
     public Canvas canvas;
     public Scene gameScene;
     public Scene menuScene;
@@ -39,9 +37,11 @@ public class SudokuUi extends Application {
 
         // New game button to start a new game
         Button newGameButton = new Button("New Game");
+        newGameButton.setOnAction(e -> newGameAlertBox());
 
         // Load game button to load old game
         Button loadGameButton = new Button("Load Game");
+        loadGameButton.setOnAction(e -> loadGameAlertBox());
 
         // Exit game button to close the game
         Button exitGameButton = new Button("Exit");
@@ -54,10 +54,9 @@ public class SudokuUi extends Application {
         menuLayout.getChildren().addAll(newGameButton, loadGameButton, exitGameButton);
         menuScene = new Scene(menuLayout, 150,200);
 
-
         // Save button saves game to database
         Button saveGameButton = new Button("Save");
-        // savegame
+        saveGameButton.setOnAction(e -> saveGameAlertBox());
 
         // Checks if sudoku is complete and opens alert box if completed
         Button checkGameButton = new Button("Check");
@@ -80,9 +79,6 @@ public class SudokuUi extends Application {
 
         // Create canvas and it's requirements
         canvas = new Canvas(360, 360);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setLineWidth(2.0);
-        drawOnCanvas(gc);
 
         // Adding elements to game windows layout
         GridPane.setConstraints(canvas, 0, 0);
@@ -125,6 +121,173 @@ public class SudokuUi extends Application {
         box.showAndWait();
     }
 
+    public void newGameAlertBox() {
+        Stage box = new Stage();
+        box.initModality(Modality.APPLICATION_MODAL);
+        box.setMinWidth(200);
+        box.setMinHeight(250);
+
+        Button emptySudokuButton = new Button("Empty Sudoku");
+        emptySudokuButton.setOnAction(e -> {
+            sudokuGrid.getNew(0);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+        Button easySudokuButton = new Button("Easy Sudoku");
+        easySudokuButton.setOnAction(e -> {
+            sudokuGrid.getNew(1);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+        Button mediumSudokuButton = new Button("Medium Sudoku");
+        mediumSudokuButton.setOnAction(e -> {
+            sudokuGrid.getNew(2);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+        Button hardSudokuButton = new Button("Hard Sudoku");
+        hardSudokuButton.setOnAction(e -> {
+            sudokuGrid.getNew(3);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+        Button closeButton = new Button("Back");
+        closeButton.setOnAction(e -> box.close());
+
+        VBox layout = new VBox();
+        layout.setSpacing(10);
+        layout.getChildren().addAll(emptySudokuButton, easySudokuButton, mediumSudokuButton, hardSudokuButton, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        box.setScene(scene);
+        box.showAndWait();
+    }
+
+    public void loadGameAlertBox() {
+        Stage box = new Stage();
+        box.initModality(Modality.APPLICATION_MODAL);
+        box.setMinWidth(200);
+        box.setMinHeight(300);
+
+        Button saveSlot1Button = new Button("Slot 1");
+        saveSlot1Button.setOnAction(e -> {
+            sudokuGrid.getSave(1);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+        Button saveSlot2Button = new Button("Slot 2");
+        saveSlot2Button.setOnAction(e -> {
+            sudokuGrid.getSave(2);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+
+        Button saveSlot3Button = new Button("Slot 3");
+        saveSlot3Button.setOnAction(e -> {
+            sudokuGrid.getSave(3);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+
+        Button saveSlot4Button = new Button("Slot 4");
+        saveSlot4Button.setOnAction(e -> {
+            sudokuGrid.getSave(4);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+
+        Button saveSlot5Button = new Button("Slot 5");
+        saveSlot5Button.setOnAction(e -> {
+            sudokuGrid.getSave(5);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            window.setScene(gameScene);
+            box.close();
+        });
+
+
+        Button closeButton = new Button("Back");
+        closeButton.setOnAction(e -> box.close());
+
+        VBox layout = new VBox();
+        layout.setSpacing(10);
+        layout.getChildren().addAll(saveSlot1Button, saveSlot2Button, saveSlot3Button, saveSlot4Button, saveSlot5Button, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        box.setScene(scene);
+        box.showAndWait();
+    }
+
+    public void saveGameAlertBox() {
+        Stage box = new Stage();
+        box.initModality(Modality.APPLICATION_MODAL);
+        box.setMinWidth(200);
+        box.setMinHeight(300);
+
+        Button saveSlot1Button = new Button("Slot 1");
+        saveSlot1Button.setOnAction(e -> {
+            sudokuGrid.saveSudoku(1);
+            box.close();
+        });
+
+        Button saveSlot2Button = new Button("Slot 2");
+        saveSlot2Button.setOnAction(e -> {
+            sudokuGrid.saveSudoku(2);
+            box.close();
+        });
+
+
+        Button saveSlot3Button = new Button("Slot 3");
+        saveSlot3Button.setOnAction(e -> {
+            sudokuGrid.saveSudoku(3);
+            box.close();
+        });
+
+
+        Button saveSlot4Button = new Button("Slot 4");
+        saveSlot4Button.setOnAction(e -> {
+            sudokuGrid.saveSudoku(4);
+            box.close();
+        });
+
+
+        Button saveSlot5Button = new Button("Slot 5");
+        saveSlot5Button.setOnAction(e -> {
+            sudokuGrid.saveSudoku(5);
+            box.close();
+        });
+
+
+        Button closeButton = new Button("Back");
+        closeButton.setOnAction(e -> box.close());
+
+        VBox layout = new VBox();
+        layout.setSpacing(10);
+        layout.getChildren().addAll(saveSlot1Button, saveSlot2Button, saveSlot3Button, saveSlot4Button, saveSlot5Button, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        box.setScene(scene);
+        box.showAndWait();
+    }
+
     public void drawOnCanvas(GraphicsContext gc) {
         gc.clearRect(0,0,360,360);
         for(int row = 0; row<9; row++) {
@@ -137,7 +300,7 @@ public class SudokuUi extends Application {
                 if (row == selected_row && col == selected_column) {
                     gc.setFill(Color.LIGHTBLUE);
                 }
-                if (sudokuGrid.getLegalStatus(row, col)) {
+                if (sudokuGrid.getLegalStatus(row, col) == 1) {
                     gc.setFill(Color.LIGHTSALMON);
                 }
                 gc.fillRoundRect(x, y, width, width, 10, 10);

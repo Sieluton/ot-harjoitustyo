@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import java.util.*;
 
 public class SudokuGridTest {
-
+/*
     @Test
     public void equalWhenConstructorGivenWrongInput(){
         int[][] grid1 = new SudokuGrid("").getGrid();
@@ -34,5 +34,5 @@ public class SudokuGridTest {
             assertTrue(Arrays.equals(grid1[i],grid2[i]));
         }
     }
-
+*/
 }

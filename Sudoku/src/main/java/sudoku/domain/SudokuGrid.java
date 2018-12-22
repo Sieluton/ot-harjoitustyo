@@ -1,23 +1,18 @@
 package sudoku.domain;
+import sudoku.dao.*;
 
 public class SudokuGrid {
-    int[][] grid;
-    boolean[][] illegalNumbers;
+    public int[][] grid;
+    public int[][] illegalNumbers;
+    public int[][] initial;
+    public SudokuDao db;
 
-    // Creates empty grid if input is not accepted by regex
-    public SudokuGrid(String numbers) {
+    public SudokuGrid() {
+        db = new SudokuDao();
+        db.createDB();
         grid = new int[9][9];
-        illegalNumbers = new boolean[9][9];
-        // if input is 81 characters long and contains only numbers from 0-9 it is made
-        if (numbers.matches("[0-9]{81}")) {
-            int next = 0;
-            for (int y = 0; y < 9; y++) {
-                for (int x = 0; x < 9; x++) {
-                    grid[y][x] = Character.getNumericValue(numbers.charAt(next));
-                    next++;
-                }
-            }
-        }
+        illegalNumbers = new int[9][9];
+        initial = new int[9][9];
     }
 
     // Returns whole grid
@@ -36,7 +31,7 @@ public class SudokuGrid {
     }
 
     // Return true if number is breaking rules
-    public boolean getLegalStatus(int y, int x) {
+    public int getLegalStatus(int y, int x) {
         return illegalNumbers[y][x];
     }
 
@@ -52,13 +47,13 @@ public class SudokuGrid {
         }
         // Checks if any number in row or column is present more than once and adds it to illegalNumbers as true
         for (int x  = 0; x < 9; x++) {
-            if (row[grid[y][x]] > 1) {
+            if (row[grid[y][x]] > 1 && grid[y][x] != 0) {
                 faulty = true;
-                illegalNumbers[y][x] = true;
+                illegalNumbers[y][x] = 1;
             }
-            if (column[grid[x][y]] > 1) {
+            if (column[grid[x][y]] > 1 && grid[x][y] != 0) {
                 faulty = true;
-                illegalNumbers[x][y] = true;
+                illegalNumbers[x][y] = 1;
             }
         }
         return faulty;
@@ -80,7 +75,7 @@ public class SudokuGrid {
             for (int x = j * 3; x < j * 3 + 3; x++) {
                 if (amounts[grid[y][x]] > 1 && grid[y][x] != 0) {
                     faulty = true;
-                    illegalNumbers[y][x] = true;
+                    illegalNumbers[y][x] = 1;
                 }
             }
         }
@@ -88,15 +83,15 @@ public class SudokuGrid {
     }
 
     public boolean checkWholeSudoku(boolean emptyCheck) {
-        illegalNumbers = new boolean[9][9];
+        illegalNumbers = new int[9][9];
         boolean faulty = false;
         for (int i = 0; i < 9; i++) {
-            if (checkRowAndColumn(i) && !faulty) {
+            if (checkRowAndColumn(i)) {
                 faulty = true;
             }
             if (i < 3) {
                 for (int j = 0; j < 3; j++) {
-                    if (checkBox(i, j) && !faulty) {
+                    if (checkBox(i, j)) {
                         faulty = true;
                     }
                 }
@@ -117,5 +112,45 @@ public class SudokuGrid {
             }
         }
         return true;
+    }
+
+    public void getSave(int slot) {
+        String[] numbers = db.getSave(slot);
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y*9+x));
+                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y*9+x));
+                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y*9+x));
+            }
+        }
+    }
+
+    public void getNew(int difficulty) {
+        String[] numbers = db.getNew(difficulty);
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                grid[y][x] = Character.getNumericValue(numbers[0].charAt(y*9+x));
+                illegalNumbers[y][x] = Character.getNumericValue(numbers[1].charAt(y*9+x));
+                initial[y][x] = Character.getNumericValue(numbers[2].charAt(y*9+x));
+            }
+        }
+    }
+
+    public void saveSudoku(int slot) {
+        String[] save = new String[3];
+        String a = "";
+        String b = "";
+        String c = "";
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                a += this.grid[y][x];
+                b += this.illegalNumbers[y][x];
+                c += this.initial[y][x];
+            }
+        }
+        save[0] = a;
+        save[1] = b;
+        save[2] = c;
+        db.saveSudoku(slot, save);
     }
 }
