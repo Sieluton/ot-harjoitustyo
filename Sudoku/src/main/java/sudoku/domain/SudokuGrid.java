@@ -40,46 +40,35 @@ public class SudokuGrid {
         return illegalNumbers[y][x];
     }
 
-    // Checks if row contains only one of each number (1-9), 0 is empty space in row.
-    public boolean checkRow(int y) {
-        int[] amounts = new int[10];
-        boolean faulty = true;
-        // Fills amounts[] with amount of each number on this row
+    // Checks if row or column contains only one of each number (1-9), 0 is empty space in row or column.
+    public boolean checkRowAndColumn(int y) {
+        int[] row = new int[10];
+        int[] column = new int[10];
+        boolean faulty = false;
+        // Fills row[] and column[] with amount of each number on this row and column
         for (int x  = 0; x < 9; x++) {
-            amounts[grid[y][x]]++;
+            row[grid[y][x]]++;
+            column[grid[x][y]]++;
         }
-        // Checks if any number in row is present more than once and adds it to illegalNumbers as true
+        // Checks if any number in row or column is present more than once and adds it to illegalNumbers as true
         for (int x  = 0; x < 9; x++) {
-            if (amounts[grid[y][x]] > 1 && grid[y][x] != 0) {
-                faulty = false;
+            if (row[grid[y][x]] > 1) {
+                faulty = true;
                 illegalNumbers[y][x] = true;
+            }
+            if (column[grid[x][y]] > 1) {
+                faulty = true;
+                illegalNumbers[x][y] = true;
             }
         }
         return faulty;
     }
 
-    // Checks if column contains only one of each number (1-9), 0 is empty space in column.
-    public boolean checkColumn(int x) {
-        int[] amounts = new int[10];
-        boolean faulty = true;
-        // Fills amounts[] with amount of each number on this column
-        for (int y  = 0; y < 9; y++) {
-            amounts[grid[y][x]]++;
-        }
-        // Checks if any number in column is present more than once and adds it to illegalNumbers as true
-        for (int y  = 0; y < 9; y++) {
-            if (amounts[grid[y][x]] > 1 && grid[y][x] != 0) {
-                faulty = false;
-                illegalNumbers[y][x] = true;
-            }
-        }
-        return faulty;
-    }
 
     // Checks if 3x3 box contains only one of each number (1-9), 0 is empty space in box.
     public boolean checkBox(int i, int j) {
         int[] amounts = new int[10];
-        boolean faulty = true;
+        boolean faulty = false;
         // Fills amounts[] with amount of each number on this box
         for (int y = i * 3; y < i * 3 + 3; y++) {
             for (int x = j * 3; x < j * 3 + 3; x++) {
@@ -90,7 +79,7 @@ public class SudokuGrid {
         for (int y = i * 3; y < i * 3 + 3; y++) {
             for (int x = j * 3; x < j * 3 + 3; x++) {
                 if (amounts[grid[y][x]] > 1 && grid[y][x] != 0) {
-                    faulty = false;
+                    faulty = true;
                     illegalNumbers[y][x] = true;
                 }
             }
@@ -98,24 +87,35 @@ public class SudokuGrid {
         return faulty;
     }
 
-    public boolean checkWholeSudoku() {
+    public boolean checkWholeSudoku(boolean emptyCheck) {
         illegalNumbers = new boolean[9][9];
-        boolean faulty = true;
+        boolean faulty = false;
         for (int i = 0; i < 9; i++) {
-            if (!checkColumn(i)) {
-                faulty = checkColumn(i);
+            if (checkRowAndColumn(i) && !faulty) {
+                faulty = true;
             }
-            if (!checkRow(i)) {
-                faulty = checkRow(i);
-            }
-            for (int j = 0; j < 3; j++) {
-                if (i < 3) {
-                    if (!checkBox(i, j)) {
-                        faulty = checkBox(i, j);
+            if (i < 3) {
+                for (int j = 0; j < 3; j++) {
+                    if (checkBox(i, j) && !faulty) {
+                        faulty = true;
                     }
                 }
             }
         }
+        if (emptyCheck && !checkForEmptySpaces()) {
+            faulty = true;
+        }
         return faulty;
+    }
+
+    public boolean checkForEmptySpaces() {
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                if (grid[y][x] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

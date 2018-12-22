@@ -1,20 +1,29 @@
 package sudoku.ui;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
 import java.util.*;
 
+
 public class SudokuUi extends Application {
     public SudokuGrid sudokuGrid = new SudokuGrid("295743861431865927876192543387459216612387495549216738763524189928671354154938672");
     public Canvas canvas;
-    public Scene scene;
+    public Scene gameScene;
+    public Scene menuScene;
+    public Stage window;
     public int selected_row = -1;
     public int selected_column = -1;
     public int key_typed = -1;
@@ -25,18 +34,95 @@ public class SudokuUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Sudoku");
-        StackPane layout = new StackPane();
+        window = primaryStage;
+        window.setTitle("Sudoku");
+
+        // New game button to start a new game
+        Button newGameButton = new Button("New Game");
+
+        // Load game button to load old game
+        Button loadGameButton = new Button("Load Game");
+
+        // Exit game button to close the game
+        Button exitGameButton = new Button("Exit");
+        exitGameButton.setOnAction(e -> window.close());
+
+        // Create VBox to use as menu layout
+        VBox menuLayout = new VBox();
+        menuLayout.setSpacing(10);
+        menuLayout.setAlignment(Pos.CENTER);
+        menuLayout.getChildren().addAll(newGameButton, loadGameButton, exitGameButton);
+        menuScene = new Scene(menuLayout, 150,200);
+
+
+        // Save button saves game to database
+        Button saveGameButton = new Button("Save");
+        // savegame
+
+        // Checks if sudoku is complete and opens alert box if completed
+        Button checkGameButton = new Button("Check");
+        checkGameButton.setOnAction(e -> checkGameAlertBox());
+
+        // Back button and its functionality
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> window.setScene(menuScene));
+
+        // Create gridpane for game windows layout
+        GridPane gameLayout = new GridPane();
+        gameLayout.setVgap(10);
+        gameLayout.setHgap(10);
+
+        // Create VBox and insert buttons to it that is then added to game windows layout
+        VBox gameSceneButtonLayout = new VBox();
+        gameSceneButtonLayout.setSpacing(15);
+        gameSceneButtonLayout.setAlignment(Pos.CENTER);
+        gameSceneButtonLayout.getChildren().addAll(checkGameButton, saveGameButton, backButton);
+
+        // Create canvas and it's requirements
         canvas = new Canvas(360, 360);
-        layout.getChildren().add(canvas);
-        scene = new Scene(layout, 400,400, Color.GREY);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setLineWidth(2.0);
         drawOnCanvas(gc);
-        selectSquare(); // Allows for choosing which square to edit
+
+        // Adding elements to game windows layout
+        GridPane.setConstraints(canvas, 0, 0);
+        GridPane.setConstraints(gameSceneButtonLayout, 1, 0);
+        gameLayout.getChildren().addAll(canvas, gameSceneButtonLayout);
+
+        // Adding the game windows layout to gameScene
+        gameScene = new Scene(gameLayout, 435,360, Color.GREY);
+
+        // Allows for choosing which square to edit
+        selectSquare();
+
+        // Allows for the game to get user input
         keyPressed();
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        window.setScene(menuScene);
+        window.show();
+    }
+
+    public void checkGameAlertBox() {
+        Stage box = new Stage();
+        box.initModality(Modality.APPLICATION_MODAL);
+        box.setMinWidth(200);
+        box.setMinHeight(100);
+
+        Label label = new Label();
+        label.setText("This sudoku is not solved");
+        if (!sudokuGrid.checkWholeSudoku(true)) {
+            label.setText("You solved this sudoku!");
+        }
+        Button closeButton = new Button("Close the window");
+        closeButton.setOnAction(e -> box.close());
+
+        VBox layout = new VBox();
+        layout.setSpacing(10);
+        layout.getChildren().addAll(label, closeButton);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        box.setScene(scene);
+        box.showAndWait();
     }
 
     public void drawOnCanvas(GraphicsContext gc) {
@@ -76,12 +162,12 @@ public class SudokuUi extends Application {
     }
 
     public void keyPressed() {
-        scene.setOnKeyPressed(e -> {
+        gameScene.setOnKeyPressed(e -> {
             if (e.getCode().isKeypadKey() || e.getCode().isDigitKey()){
                 key_typed = Integer.parseInt(e.getText());
                 if (selected_row != -1 && selected_column != -1) {
                     sudokuGrid.setNumber(selected_row, selected_column, key_typed);
-                    sudokuGrid.checkWholeSudoku();
+                    sudokuGrid.checkWholeSudoku(false);
                 }
                 drawOnCanvas(canvas.getGraphicsContext2D());
             }
