@@ -12,6 +12,8 @@ Tarjoaa myös mahdollisuuden tallettaa sudoku ja jatkaa sitä myöhemmin.
 
 [Arkkitehtuurikuvaus](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/testausdokumentti.md)
+
 [Tuntikirjanpito](https://github.com/Sieluton/ot-harjoitustyo/blob/master/Sudoku/dokumentaatio/tuntikirjanpito.md)
 
 
