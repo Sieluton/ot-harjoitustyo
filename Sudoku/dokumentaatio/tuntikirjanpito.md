@@ -8,4 +8,5 @@ päivä | aika | mitä tein
 4.12. | 6 | pelin logiikka melkein kokonaan valmis
 21.12 | 8 | käyttöliittymä saatettu loppuun asti ja koodia parannaltu
 22.12. | 7 | tietokanta lisätty toiminnallisuuksien kanssa
-yht | 33 |
+22.12. | 1 | lisätty mahdollinen ruutujen lukitus
+yht | 34 |

@@ -1,7 +1,6 @@
 package sudoku.ui;
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,8 +14,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sudoku.domain.SudokuGrid;
-
-import java.awt.event.MouseEvent;
 
 
 public class SudokuUi extends Application {

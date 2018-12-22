@@ -10,17 +10,21 @@ Peli on sudoku jonka tarkoitus on ratkaista ratkaisematon 9x9 sudoku täyttämä
 
 ### Valikossa
 
-- Käyttäjä voi aloittaa pelin painalla "Start game" nappia joka antaa sudokun alun joka on ratkaistavissa.
+- Käyttäjä voi aloittaa pelin painalla "New Game" nappia, joka avaa toisen ikkunan, josta voi valita joko tyhjän sudokun tai valmiin alun haastavuuden mukaan.
 
-- Käyttäjä voi aloittaa pelin painamalla "Custom game" nappia joka luo tyhjän sudoku ruudukon.
+- Käyttäjä voi aloittaa pelin painamalla "Load Game" nappia, joka avaa toisen ikkunan, josta voi valita tallennetun pelin.
 
 ### Pelissä
 
 - Käyttäjä voi täyttää sudokua klikkaamalla ruutua ja painamalla numeroa 0-9 väliltä ja tässä 0 tyhjentää ruudun.
 
-- Käyttäjä voi tarkistaa onko sudoku oikein painamalla "Check sudoku" nappia.
+- Hiiren oikealla klikkaus lukitsee ruudun, jotta sitä ei voi muokata.
+
+- Käyttäjä voi tarkistaa onko sudoku oikein painamalla "Check" nappia.
+
+- Pelin voi tallentaa painamalla "Save" nappia ja valitsemalla tallennuspaikan aukeavasta ikkunasta.
 
 
 ## Jatkokehitys idea
 
-- Mahdollisuus syöttää oma sudoku ja antaa tietokoneen ratkaista se.
+- Mahdollisuus antaa tietokoneen ratkaista sudoku ja tämän tarjoamat muut avustukset.
